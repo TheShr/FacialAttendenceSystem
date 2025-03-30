@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processing...</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color: #003366; /* Dark Blue */
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            color: #003366;
+        }
+
+        #status {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Processing, Please Wait...</h1>
+    <p id="status">The script is being executed. Please wait while we process.</p>
+
+    <script>
+        // Function to check if the script is still running
+        function checkScriptStatus() {
+            fetch('/check-script-status')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === "completed") {
+                        // Redirect to the desired page when the script completes
+                        window.location.href = "/redirect_to.html";  // Update this URL to the target page
+                    } else {
+                        document.getElementById("status").innerText = "The script is still running...";
+                    }
+                })
+                .catch(error => {
+                    console.error('Error checking script status:', error);
+                    document.getElementById("status").innerText = "Error checking status.";
+                });
+        }
+
+        // Automatically start the script when the page loads
+        window.onload = function() {
+            fetch('/run-python')
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);  // Log response to ensure the script started
+                    if (data.status === "success") {
+                        // Start checking the script status after a short delay
+                        setInterval(checkScriptStatus, 5000);
+                    } else {
+                        document.getElementById("status").innerText = "Failed to start the script.";
+                    }
+                })
+                .catch(error => {
+                    console.error('Error starting script:', error);
+                    document.getElementById("status").innerText = "Error starting script.";
+                });
+        };
+    </script>
+</body>
+</html>

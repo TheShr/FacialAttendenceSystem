@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #1A237E; /* Dark blue background */
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            position: relative;
+        }
+
+        .thank-you-container {
+            background-color: rgba(255, 255, 255, 0.9); /* White with slight transparency */
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+            max-width: 450px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: #1A237E; /* Dark blue text */
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            color: #333; /* Dark gray text */
+        }
+
+        .go-back-button {
+            padding: 12px 25px;
+            font-size: 1.1em;
+            background-color: #1A237E; /* Dark blue button */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .go-back-button:hover {
+            background-color: #0D1A6A; /* Darker blue on hover */
+        }
+
+        .go-back-button:focus {
+            outline: none;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 100%;
+            font-size: 0.9em;
+            color: #fff !important; /* Ensuring white text with !important */
+            text-align: center;
+            padding: 10px 0;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="thank-you-container">
+        <h1>Thank You!</h1>
+        <p>Attendance marked successfully.</p>
+        <a href="javascript:history.back()" class="go-back-button">Go Back</a>
+    </div>
+
+    <div class="footer">
+        <p>© 2024 Attendify. All rights reserved.</p>
+    </div>
+</body>
+</html>
